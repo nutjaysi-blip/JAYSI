@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAYSI - Premium Ultimate Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="splash-content">
+            <h1 class="logo-glow">JAYSI</h1>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <button id="menu-toggle-btn" class="icon-btn"><i class="fas fa-bars"></i></button>
+            <div class="logo">JAYSI</div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="app-search" placeholder="ค้นหา">
+            </div>
+        </header>
+
+        <div id="side-drawer" class="drawer">
+            <div class="drawer-header">
+                <h3>เมนูบริการ</h3>
+                <button id="drawer-close" class="icon-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="drawer-menu">
+                <li data-target="home-view"><i class="fas fa-home"></i> หน้าแรก (Home)</li>
+                <li data-target="news-view"><i class="fas fa-newspaper"></i> ข่าวสาร (News)</li>
+                <li data-target="spoiler-view"><i class="fas fa-eye"></i> สปอยล์ (Spoiler)</li>
+                <li data-target="promotion-view"><i class="fas fa-tags"></i> โปรโมท (Promote)</li>
+            </ul>
+        </div>
+        <div id="drawer-overlay" class="overlay"></div>
+
+        <main id="main-content">
+            
+            <section id="home-view" class="page-view active">
+                <div class="poster-slider">
+                    <div class="slider-track" id="poster-track"></div>
+                </div>
+
+                <div class="marquee-container" id="marquee-wrapper"></div>
+
+                <div class="social-platforms-grid" id="social-grid-container"></div>
+
+                <h3 class="section-title"><i class="fas fa-server"></i> รายการต่างๆ</h3>
+                <div class="server-list-grid" id="server-list-container"></div>
+            </section>
+
+            <section id="news-view" class="page-view">
+                <h3 class="section-title"><i class="fas fa-newspaper"></i> รายการต่างๆ</h3>
+                <div class="content-list" id="news-container"></div>
+            </section>
+
+            <section id="spoiler-view" class="page-view">
+                <h3 class="section-title"><i class="fas fa-eye"></i> รายการต่างๆ </h3>
+                <div class="content-list" id="spoiler-container"></div>
+            </section>
+
+            <section id="promotion-view" class="page-view">
+                <h3 class="section-title"><i class="fas fa-tags"></i> รายการต่างๆ</h3>
+                <div class="content-list" id="promo-container"></div>
+            </section>
+
+            <section id="admin-view" class="page-view">
+                <div class="admin-header">
+                    <h2><i class="fas fa-user-shield text-blue"></i> JAYSI Admin Dashboard</h2>
+                    <button id="logout-btn" class="btn-danger-sm">ออกจากระบบ</button>
+                </div>
+                
+                <div class="crud-panel">
+                    <h3><i class="fas fa-share-alt"></i> จัดการลิงก์ปุ่มโซเชียลมิเดีย</h3>
+                    <div class="input-group"><label>Discord:</label><input type="text" id="link-discord"></div>
+                    <div class="input-group"><label>Facebook:</label><input type="text" id="link-facebook"></div>
+                    <div class="input-group"><label>TikTok:</label><input type="text" id="link-tiktok"></div>
+                    <div class="input-group"><label>YouTube:</label><input type="text" id="link-youtube"></div>
+                    <button id="save-socials-btn" class="btn-action">บันทึกการอัปเดตโซเชียล</button>
+                </div>
+
+                <div class="crud-panel">
+                    <h3><i class="fas fa-sliders-h"></i> จัดการโปสเตอร์และข้อความวิ่ง (หน้าแรก)</h3>
+                    <div class="input-group"><label>ข้อความวิ่งหน้าแรก:</label><input type="text" id="adm-marquee-input"></div>
+                    <div class="input-group"><label>ลิงก์รูปโปสเตอร์แบนเนอร์ที่ 1:</label><input type="text" id="adm-poster1"></div>
+                    <div class="input-group"><label>หัวข้อโปสเตอร์ที่ 1:</label><input type="text" id="adm-title1"></div>
+                    <div class="input-group"><label>ลิงก์รูปโปสเตอร์แบนเนอร์ที่ 2:</label><input type="text" id="adm-poster2"></div>
+                    <div class="input-group"><label>หัวข้อโปสเตอร์ที่ 2:</label><input type="text" id="adm-title2"></div>
+                    <button id="save-home-assets-btn" class="btn-action">อัปเดตโปสเตอร์และข้อความ</button>
+                </div>
+
+                <div class="crud-panel">
+                    <h3><i class="fas fa-plus"></i> เพิ่ม / จัดการเซิร์ฟเวอร์ (หน้าหลัก)</h3>
+                    <div class="input-group"><label>ชื่อเซิร์ฟเวอร์:</label><input type="text" id="srv-title"></div>
+                    <div class="input-group"><label>ลิงก์รูปภาพประกอบการ์ดเซิร์ฟเวอร์:</label><input type="text" id="srv-img" placeholder="https://..."></div>
+                    <div class="input-group"><label>คำอธิบายสั้นๆ (บนหน้าหลัก):</label><input type="text" id="srv-short"></div>
+                    <div class="input-group"><label>คำอธิบายเชิงลึก (เมื่อคลิกดูย่อย):</label><textarea id="srv-full" rows="3"></textarea></div>
+                    <div class="input-group"><label>ข้อความสำหรับปุ่มคัดลอก (Copy text):</label><input type="text" id="srv-copy" placeholder="เช่น IP: 127.0.0.1 หรือ Code"></div>
+                    <div class="input-group"><label>ลิงก์ปุ่มกดไปยังแพลตฟอร์ม:</label><input type="text" id="srv-link" placeholder="https://..."></div>
+                    <button id="save-server-btn" class="btn-action">บันทึกเพิ่มเซิร์ฟเวอร์</button>
+                </div>
+
+                <div class="crud-panel">
+                    <h3><i class="fas fa-edit"></i> เพิ่มข้อมูลในหน้า News / Spoiler / Promotion</h3>
+                    <div class="input-group">
+                        <label>เลือกหน้าที่ต้องการส่งข้อมูลไป:</label>
+                        <select id="content-page-target">
+                            <option value="news">หน้า News (ข่าวสาร)</option>
+                            <option value="spoilers">หน้า Spoiler (สปอยล์)</option>
+                            <option value="promotions">หน้า Promotion (โปรโมชัน)</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label>หัวข้อเรื่อง:</label><input type="text" id="content-title"></div>
+                    <div class="input-group"><label>ลิงก์รูปภาพประกอบ:</label><input type="text" id="content-img" placeholder="https://..."></div>
+                    <div class="input-group"><label>รายละเอียดเนื้อหา:</label><textarea id="content-desc" rows="3"></textarea></div>
+                    <button id="save-content-btn" class="btn-action">บันทึกข้อมูลเข้าหน้านั้นๆ</button>
+                </div>
+
+                <div class="crud-panel">
+                    <h3><i class="fas fa-sync-alt"></i> รายการข้อมูลระบบที่สามารถเลือกกดลบได้</h3>
+                    <div id="live-data-list"></div>
+                </div>
+            </section>
+        </main>
+
+        <div id="details-modal" class="modal">
+            <div class="modal-content animate-pop">
+                <div class="modal-media" id="modal-server-img"></div>
+                <h3 id="modal-server-title">ชื่อเซิร์ฟเวอร์</h3>
+                <p id="modal-server-desc">รายละเอียด...</p>
+                
+                <div class="copy-box-container" id="copy-section">
+                    <input type="text" id="modal-copy-input" readonly>
+                    <button id="modal-copy-btn"><i class="fas fa-copy"></i> คัดลอกข้อมูล</button>
+                </div>
+
+                <div class="modal-buttons" style="margin-top: 15px;">
+                    <a href="#" id="modal-server-action" target="_blank" class="btn-action" style="text-decoration:none; text-align:center;">ไปยังแพลตฟอร์มนี้</a>
+                    <button id="modal-close" style="background:#111; color:#fff; border:1px solid #333;">ปิด</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="login-modal" class="modal">
+            <div class="modal-content animate-pop" style="max-width:320px; text-align:center;">
+                <i class="fas fa-shield-alt text-blue" style="font-size:2.5rem; margin-bottom:10px;"></i>
+                <h3>ADMIN CONFIRMATION</h3>
+                <p style="font-size:0.8rem; color:#aaa; margin-bottom:15px;">กรุณากรอกรหัสผ่านเพื่อตั้งค่าแอปพลิเคชัน</p>
+                <input type="password" id="admin-password" placeholder="รหัสผ่าน">
+                <div class="modal-buttons">
+                    <button id="login-submit">ล็อกอิน</button>
+                    <button id="login-cancel" style="background:#222; color:#fff;">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-target="home-view"><i class="fas fa-home"></i><span>หน้าแรก</span></button>
+            <button class="nav-btn" data-target="news-view"><i class="fas fa-newspaper"></i><span>ข่าวสาร</span></button>
+            <button class="nav-btn" data-target="spoiler-view"><i class="fas fa-eye"></i><span>สปอยล์</span></button>
+            <button class="nav-btn" data-target="promotion-view"><i class="fas fa-tags"></i><span>โปรโมท</span></button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
